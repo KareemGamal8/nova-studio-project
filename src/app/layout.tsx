@@ -2,20 +2,20 @@ import { Footer, Header } from "@/src/design-system/layouts";
 import type { Metadata } from "next";
 import "./globals.css";
 
-
-
 export const metadata: Metadata = {
-  title: "CodeKody",
+  title: "CodeKody - تعلم البرمجة",
   description: "المنصة الأولى لتعليم البرمجة في العالم العربي",
-  keywords: [
-    "CodeKody",
-    "تعلم البرمجة",
-    "React",
-    "Next.js",
-    "Front-End",
-    "JavaScript",
-  ],
+  keywords: ["CodeKody", "تعلم البرمجة", "React", "Next.js"],
+  openGraph: {
+    title: "CodeKody",
+    description: "المنصة الأولى لتعليم البرمجة في العالم العربي",
+    url: "https://yourdomain.com",
+    siteName: "CodeKody",
+    locale: "ar_AR",
+    type: "website",
+  },
 };
+
 
 export default function RootLayout({
   children,
