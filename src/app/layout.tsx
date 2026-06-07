@@ -7,6 +7,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "CodeKody",
   description: "المنصة الأولى لتعليم البرمجة في العالم العربي",
+  keywords: [
+    "CodeKody",
+    "تعلم البرمجة",
+    "React",
+    "Next.js",
+    "Front-End",
+    "JavaScript",
+  ],
 };
 
 export default function RootLayout({
