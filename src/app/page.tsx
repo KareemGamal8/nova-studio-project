@@ -1,4 +1,4 @@
-import { Hero, Stats, AboutUs, Courses, Packages } from "@/src/modules/home/components";
+import { AboutUs, Courses, Hero, Packages, Stats } from "@/src/modules/home/components";
 
 export default function page() {
   return (
