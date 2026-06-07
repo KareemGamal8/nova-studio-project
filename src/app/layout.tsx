@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CodeKody",
     description: "المنصة الأولى لتعليم البرمجة في العالم العربي",
-    url: "https://yourdomain.com",
+    url: "https://codekody.vercel.app/",
     siteName: "CodeKody",
     locale: "ar_AR",
     type: "website",
@@ -30,7 +30,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col font-cairo">
         <Header />
-        <main className="">{children}</main>
+        <main>{children}</main>
         <Footer />
         <SpeedInsights />
       </body>
