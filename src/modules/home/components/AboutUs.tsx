@@ -54,10 +54,10 @@ export function AboutUs() {
           <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">
             من نحن
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             لماذا تختار <span className="text-primary">CodeKody</span>؟
           </h2>
-          <p className="max-w-[42rem] text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          <p className="max-w-[42rem] text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground">
             نحن لسنا مجرد منصة تعليمية، بل شريكك في رحلة النجاح. نقدم لك كل ما تحتاجه للبدء في عالم البرمجة وبناء مسيرة مهنية ناجحة.
           </p>
         </div>
@@ -68,19 +68,19 @@ export function AboutUs() {
             return (
               <div
                 key={service.id}
-                className="group relative overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-[2rem] border border-border bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl"
               >
                 {/* Decorative background element on hover */}
                 <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-[2.5]" />
                 
                 <div className="relative z-10 flex flex-col space-y-5">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Icon className="size-8" />
+                  <div className="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                    <Icon className="size-6 sm:size-8" />
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground">
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground">
                     {service.title}
                   </h3>
-                  <p className="leading-relaxed text-muted-foreground">
+                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
                     {service.description}
                   </p>
                 </div>

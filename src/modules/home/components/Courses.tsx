@@ -66,10 +66,10 @@ export function Courses() {
           <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">
             مجالات التعلم
           </div>
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             تصفح <span className="text-primary">دوراتنا</span> المتاحة
           </h2>
-          <p className="max-w-[42rem] text-lg leading-relaxed text-muted-foreground sm:text-xl">
+          <p className="max-w-[42rem] text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground">
             اختر المسار الذي يناسب طموحك وابدأ في بناء مهاراتك من خلال مجموعة متنوعة من الدورات التدريبية.
           </p>
         </div>
@@ -80,16 +80,16 @@ export function Courses() {
             return (
               <div
                 key={course.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-border bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 <div>
-                  <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 ${course.bg} ${course.color}`}>
-                    <Icon className="size-8" />
+                  <div className={`mb-6 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl transition-transform duration-300 group-hover:scale-110 ${course.bg} ${course.color}`}>
+                    <Icon className="size-6 sm:size-8" />
                   </div>
-                  <h3 className="mb-3 text-2xl font-bold text-foreground">
+                  <h3 className="mb-3 text-xl sm:text-2xl font-bold text-foreground">
                     {course.title}
                   </h3>
-                  <p className="leading-relaxed text-muted-foreground">
+                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
                     {course.description}
                   </p>
                 </div>
