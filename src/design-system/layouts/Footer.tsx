@@ -77,14 +77,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-primary/15 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-primary/15">
           <p className="text-sm text-muted-foreground text-center">
             جميع الحقوق محفوظة &copy; {currentYear} Code Kody.
           </p>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <Link href="#" className="hover:text-primary transition-colors">الشروط والأحكام</Link>
-            <Link href="#" className="hover:text-primary transition-colors">سياسة الخصوصية</Link>
-          </div>
+
         </div>
       </div>
     </footer>
