@@ -71,63 +71,65 @@ export function Hero() {
                 </div>
                 
                 {/* Fake IDE Editor */}
-                <div dir="ltr" className="relative min-h-100 w-full flex-col overflow-hidden rounded-[1.5rem] bg-secondary/50">
+                <div dir="ltr" className="relative min-h-100 w-full flex-col overflow-hidden rounded-[1.5rem] bg-secondary/50 dark:bg-[#0c0e17] border border-border dark:border-[#1b1e36]">
                   {/* IDE Header */}
-                  <div className="flex items-center gap-2 border-b border-border bg-secondary/80 px-4 py-3 backdrop-blur-sm">
+                  <div className="flex items-center gap-2 border-b border-border dark:border-[#1b1e36] bg-secondary/80 dark:bg-[#131627] px-4 py-3 backdrop-blur-sm">
                     <div className="size-3 rounded-full bg-destructive/80" />
                     <div className="size-3 rounded-full bg-[#EAB308]/80" />
                     <div className="size-3 rounded-full bg-[#22C55E]/80" />
-                    <div className="ms-4 font-mono text-xs font-medium text-muted-foreground">main.ts</div>
+                    <div className="ms-4 font-mono text-xs font-medium text-muted-foreground dark:text-[#8F9BB3]">main.ts</div>
                   </div>
                   
                   {/* IDE Content */}
-                  <div className="flex-1 p-4 sm:p-6 font-mono text-sm leading-relaxed text-foreground/90 sm:text-base">
+                  <div className="flex-1 p-4 sm:p-6 font-mono text-sm leading-relaxed text-foreground/90 dark:text-[#f8f8f2] sm:text-base">
                     <div className="flex gap-2 sm:gap-3">
-                      <span className="text-primary">const</span> 
+                      <span className="text-primary dark:text-[#ff79c6]">const</span> 
                       <span>platform</span> 
-                      <span>=</span> 
-                      <span className="text-[#22C55E]">"CodeKody"</span>
-                      <span>;</span>
+                      <span className="text-primary dark:text-[#ff79c6]">=</span> 
+                      <span className="text-emerald-600 dark:text-[#50fa7b]">"CodeKody"</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">;</span>
                     </div>
                     
                     <div className="mt-4 flex gap-2 sm:gap-3">
-                      <span className="text-primary">function</span> 
-                      <span className="text-[#3B82F6]">startLearning</span>
-                      <span>() {"{"}</span>
+                      <span className="text-primary dark:text-[#ff79c6]">function</span> 
+                      <span className="text-blue-600 dark:text-[#50fa7b]">startLearning</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">() {"{"}</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-4 sm:ps-6">
-                      <span className="text-primary">return</span> 
-                      <span>{"{"}</span>
+                      <span className="text-primary dark:text-[#ff79c6]">return</span> 
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">{"{"}</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-8 sm:ps-12">
-                      <span>success:</span> 
-                      <span className="text-primary">true</span>
-                      <span>,</span>
+                      <span className="text-violet-600 dark:text-[#8be9fd]">success</span>
+                      <span className="text-primary dark:text-[#ff79c6]">:</span> 
+                      <span className="text-orange-600 dark:text-[#bd93f9]">true</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">,</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-8 sm:ps-12">
-                      <span>skills:</span> 
-                      <span>[</span>
-                      <span className="text-[#22C55E]">"React"</span>
-                      <span>,</span> 
-                      <span className="text-[#22C55E]">"Next.js"</span>
-                      <span>,</span> 
-                      <span className="text-[#22C55E]">"TS"</span>
-                      <span>]</span>
+                      <span className="text-violet-600 dark:text-[#8be9fd]">skills</span>
+                      <span className="text-primary dark:text-[#ff79c6]">:</span> 
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">[</span>
+                      <span className="text-emerald-600 dark:text-[#50fa7b]">"React"</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">,</span> 
+                      <span className="text-emerald-600 dark:text-[#50fa7b]">"Next.js"</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">,</span> 
+                      <span className="text-emerald-600 dark:text-[#50fa7b]">"TS"</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">]</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-4 sm:ps-6">
-                      <span>{"}"}</span>
-                      <span>;</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">{"}"}</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">;</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3">
-                      <span>{"}"}</span>
+                      <span className="text-foreground/90 dark:text-[#f8f8f2]">{"}"}</span>
                     </div>
                     
-                    <div className="mt-6 flex gap-3 text-muted-foreground motion-safe:animate-pulse">
+                    <div className="mt-6 flex gap-3 text-muted-foreground dark:text-[#6272a4] motion-safe:animate-pulse">
                       <span>// جاري تحميل المستقبل...</span>
                     </div>
                   </div>

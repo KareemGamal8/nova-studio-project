@@ -69,7 +69,7 @@ export function Courses() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
             تصفح <span className="text-primary">دوراتنا</span> المتاحة
           </h2>
-          <p className="max-w-[42rem] text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground">
+          <p className="max-w-2xl text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-muted-foreground">
             اختر المسار الذي يناسب طموحك وابدأ في بناء مهاراتك من خلال مجموعة متنوعة من الدورات التدريبية.
           </p>
         </div>
