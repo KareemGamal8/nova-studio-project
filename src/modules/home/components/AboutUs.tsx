@@ -68,13 +68,13 @@ export function AboutUs() {
             return (
               <div
                 key={service.id}
-                className="group relative overflow-hidden rounded-[2rem] border border-border bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl"
+                className="group relative overflow-hidden rounded-[2rem] border border-border bg-card dark:bg-[#0c0722]/50 dark:border-border/30 dark:hover:border-primary/20 p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl dark:hover:shadow-[var(--grad-purble-dark)]/10"
               >
                 {/* Decorative background element on hover */}
-                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/5 transition-transform duration-500 group-hover:scale-[2.5]" />
+                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/5 dark:bg-[var(--grad-purble-dark)]/5 transition-transform duration-500 group-hover:scale-[2.5]" />
                 
                 <div className="relative z-10 flex flex-col space-y-5">
-                  <div className="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <div className="flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl bg-primary/10 text-primary dark:bg-[var(--grad-purble-dark)]/10 dark:text-[var(--grad-purble-light)] transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground dark:group-hover:bg-linear-to-r dark:group-hover:from-[var(--grad-purble-dark)] dark:group-hover:to-[var(--grad-purble-light)]">
                     <Icon className="size-6 sm:size-8" />
                   </div>
                   <h3 className="text-xl sm:text-2xl font-bold text-foreground">

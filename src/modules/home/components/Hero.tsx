@@ -4,9 +4,9 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <main className="flex min-h-[calc(100vh-5rem)] flex-col">
+    <section className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-background pb-32 pt-20 lg:pb-40 lg:pt-32">
+      <section className="relative py-32 overflow-hidden bg-background pt-20 lg:pt-32">
         {/* Decorative Gradients */}
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
           <div className="absolute right-[-10%] top-[-10%] h-150 w-150 rounded-full bg-primary/10 blur-[120px]" />
@@ -71,66 +71,66 @@ export function Hero() {
                 </div>
                 
                 {/* Fake IDE Editor */}
-                <div dir="ltr" className="relative min-h-100 w-full flex-col overflow-hidden rounded-[1.5rem] bg-secondary/50 dark:bg-[#0c0e17] border border-border dark:border-[#1b1e36]">
+                <div dir="ltr" className="relative min-h-100 w-full flex-col overflow-hidden rounded-[1.5rem] bg-secondary/50 dark:bg-[var(--dark-blue)]/60 border border-border dark:border-border/30">
                   {/* IDE Header */}
-                  <div className="flex items-center gap-2 border-b border-border dark:border-[#1b1e36] bg-secondary/80 dark:bg-[#131627] px-4 py-3 backdrop-blur-sm">
+                  <div className="flex items-center gap-2 border-b border-border dark:border-border/30 bg-secondary/80 dark:bg-[var(--light-blue)]/65 px-4 py-3 backdrop-blur-sm">
                     <div className="size-3 rounded-full bg-destructive/80" />
                     <div className="size-3 rounded-full bg-[#EAB308]/80" />
                     <div className="size-3 rounded-full bg-[#22C55E]/80" />
-                    <div className="ms-4 font-mono text-xs font-medium text-muted-foreground dark:text-[#8F9BB3]">main.ts</div>
+                    <div className="ms-4 font-mono text-xs font-medium text-muted-foreground dark:text-[var(--white)]/50">main.ts</div>
                   </div>
                   
                   {/* IDE Content */}
-                  <div className="flex-1 p-4 sm:p-6 font-mono text-sm leading-relaxed text-foreground/90 dark:text-[#f8f8f2] sm:text-base">
+                  <div className="flex-1 p-4 sm:p-6 font-mono text-sm leading-relaxed text-foreground/90 dark:text-[var(--white)]/90 sm:text-base">
                     <div className="flex gap-2 sm:gap-3">
-                      <span className="text-primary dark:text-[#ff79c6]">const</span> 
+                      <span className="text-primary dark:text-[var(--grad-purble-light)]">const</span> 
                       <span>platform</span> 
-                      <span className="text-primary dark:text-[#ff79c6]">=</span> 
-                      <span className="text-emerald-600 dark:text-[#50fa7b]">"CodeKody"</span>
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">;</span>
+                      <span className="text-primary dark:text-[var(--white)]">=</span> 
+                      <span className="text-emerald-600 dark:text-[var(--green)]">{"\"CodeKody\""}</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">;</span>
                     </div>
                     
                     <div className="mt-4 flex gap-2 sm:gap-3">
-                      <span className="text-primary dark:text-[#ff79c6]">function</span> 
-                      <span className="text-blue-600 dark:text-[#50fa7b]">startLearning</span>
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">() {"{"}</span>
+                      <span className="text-primary dark:text-[var(--grad-purble-light)]">function</span> 
+                      <span className="text-blue-600 dark:text-[var(--white)]">startLearning</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">() {"{"}</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-4 sm:ps-6">
-                      <span className="text-primary dark:text-[#ff79c6]">return</span> 
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">{"{"}</span>
+                      <span className="text-primary dark:text-[var(--grad-purble-light)]">return</span> 
+                      <span className="text-foreground/90 dark:text-[var(--white)]">{"{"}</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-8 sm:ps-12">
-                      <span className="text-violet-600 dark:text-[#8be9fd]">success</span>
-                      <span className="text-primary dark:text-[#ff79c6]">:</span> 
-                      <span className="text-orange-600 dark:text-[#bd93f9]">true</span>
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">,</span>
+                      <span className="text-violet-600 dark:text-[var(--pink)]">success</span>
+                      <span className="text-primary dark:text-[var(--white)]">:</span> 
+                      <span className="text-orange-600 dark:text-[var(--grad-orange-light)]">true</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">,</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-8 sm:ps-12">
-                      <span className="text-violet-600 dark:text-[#8be9fd]">skills</span>
-                      <span className="text-primary dark:text-[#ff79c6]">:</span> 
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">[</span>
-                      <span className="text-emerald-600 dark:text-[#50fa7b]">"React"</span>
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">,</span> 
-                      <span className="text-emerald-600 dark:text-[#50fa7b]">"Next.js"</span>
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">,</span> 
-                      <span className="text-emerald-600 dark:text-[#50fa7b]">"TS"</span>
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">]</span>
+                      <span className="text-violet-600 dark:text-[var(--pink)]">skills</span>
+                      <span className="text-primary dark:text-[var(--white)]">:</span> 
+                      <span className="text-foreground/90 dark:text-[var(--white)]">[</span>
+                      <span className="text-emerald-600 dark:text-[var(--green)]">{"\"React\""}</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">,</span> 
+                      <span className="text-emerald-600 dark:text-[var(--green)]">{"\"Next.js\""}</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">,</span> 
+                      <span className="text-emerald-600 dark:text-[var(--green)]">{"\"TS\""}</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">]</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3 ps-4 sm:ps-6">
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">{"}"}</span>
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">;</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">{"}"}</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">;</span>
                     </div>
                     
                     <div className="mt-2 flex gap-2 sm:gap-3">
-                      <span className="text-foreground/90 dark:text-[#f8f8f2]">{"}"}</span>
+                      <span className="text-foreground/90 dark:text-[var(--white)]">{"}"}</span>
                     </div>
                     
-                    <div className="mt-6 flex gap-3 text-muted-foreground dark:text-[#6272a4] motion-safe:animate-pulse">
-                      <span>// جاري تحميل المستقبل...</span>
+                    <div className="mt-6 flex gap-3 text-muted-foreground dark:text-[var(--white)]/40 motion-safe:animate-pulse">
+                      <span>{"// جاري تحميل المستقبل..."}</span>
                     </div>
                   </div>
                 </div>
@@ -141,6 +141,6 @@ export function Hero() {
           </div>
         </div>
       </section>
-    </main>
+    </section>
   );
 }

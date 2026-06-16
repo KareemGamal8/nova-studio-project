@@ -7,14 +7,14 @@ import {
   GraduationCap,
   Menu,
   MessageCircle,
+  Moon,
   PackageCheck,
   Sun,
-  Moon,
   Users,
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const headerLinks = [
   {
@@ -45,7 +45,7 @@ function MobileHeader() {
     <div className="md:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-secondary/60 text-foreground transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+        className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-secondary/40 text-foreground transition-all hover:scale-105 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
         aria-label="Toggle menu"
       >
         {isOpen ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -61,7 +61,7 @@ function MobileHeader() {
                   href={link.href}
                   key={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3 rounded-md px-4 py-3 font-bold text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                  className="flex items-center gap-3 rounded-xl px-4 py-3 font-bold text-foreground transition-all hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-primary-foreground"
                 >
                   <Icon className="size-5" aria-hidden="true" />
                   {link.label}
@@ -72,7 +72,7 @@ function MobileHeader() {
             <Link
               href={URLS.courses}
               onClick={() => setIsOpen(false)}
-              className="flex h-11 w-full items-center justify-center gap-2 rounded-md bg-foreground px-5 text-sm font-bold text-background shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-bold text-primary-foreground shadow-lg hover:bg-primary/95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
               <GraduationCap className="size-5" aria-hidden="true" />
               ابدأ التعلم
@@ -89,7 +89,10 @@ function ThemeToggle() {
 
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
+    const timer = setTimeout(() => {
+      setTheme(isDark ? "dark" : "light");
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const toggleTheme = () => {
@@ -108,7 +111,7 @@ function ThemeToggle() {
     };
 
     if (typeof document !== "undefined" && "startViewTransition" in document) {
-      (document as any).startViewTransition(updateDOM);
+      (document as Document & { startViewTransition: (cb: () => void) => void }).startViewTransition(updateDOM);
     } else {
       updateDOM();
     }
@@ -162,7 +165,7 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-2 rounded-md border border-border bg-secondary/60 p-1 md:flex">
+          <nav className="hidden items-center gap-1.5 rounded-xl border border-border bg-secondary/40 p-1 md:flex">
             {headerLinks.map((link) => {
               const Icon = link.icon;
 
@@ -176,7 +179,7 @@ export function Header() {
                   }}
                   href={link.href}
                   key={link.href}
-                  className="flex h-10 shrink-0 items-center gap-2 rounded-md border border-border bg-background px-3 font-bold text-black dark:text-white transition-colors hover:text-white hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                  className="flex h-10 shrink-0 items-center gap-2 rounded-lg px-4 font-bold text-muted-foreground dark:text-foreground/80 transition-all hover:text-primary dark:hover:text-primary-foreground hover:bg-primary/10 dark:hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                 >
                   <Icon className="size-4" aria-hidden="true" />
                   {link.label}
@@ -190,7 +193,7 @@ export function Header() {
             
             <Link
               href={URLS.courses}
-              className="hidden h-11 shrink-0 items-center gap-2 rounded-md bg-foreground px-5 text-sm font-bold text-background shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 lg:flex"
+              className="hidden h-11 shrink-0 items-center gap-2 rounded-xl bg-primary px-5 text-sm font-bold text-primary-foreground shadow-lg transition-all hover:scale-105 hover:bg-primary/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 lg:flex"
             >
               <GraduationCap className="size-4" aria-hidden="true" />
               ابدأ التعلم

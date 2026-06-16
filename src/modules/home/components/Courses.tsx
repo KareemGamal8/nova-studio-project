@@ -80,7 +80,7 @@ export function Courses() {
             return (
               <div
                 key={course.id}
-                className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-border bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-border bg-card dark:bg-[#0c0722]/50 dark:border-border/30 dark:hover:border-primary/20 p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:shadow-[var(--grad-purble-dark)]/10"
               >
                 <div>
                   <div className={`mb-6 flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl transition-transform duration-300 group-hover:scale-110 ${course.bg} ${course.color}`}>

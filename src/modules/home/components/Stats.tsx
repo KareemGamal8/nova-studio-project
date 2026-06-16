@@ -93,14 +93,14 @@ export function Stats() {
             return (
               <div
                 key={stat.id}
-                className="group flex flex-col items-center justify-center space-y-4 rounded-3xl border border-border bg-card p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5"
+                className="group flex flex-col items-center justify-center space-y-4 rounded-3xl border border-border bg-card dark:bg-[#0c0722]/50 dark:border-border/30 dark:hover:border-primary/20 p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-[var(--grad-purble-dark)]/10"
               >
-                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 text-primary dark:bg-[var(--grad-purble-dark)]/10 dark:text-[var(--grad-purble-light)] transition-colors group-hover:bg-primary group-hover:text-primary-foreground dark:group-hover:bg-linear-to-r dark:group-hover:from-[var(--grad-purble-dark)] dark:group-hover:to-[var(--grad-purble-light)]">
                   <Icon className="size-10" />
                 </div>
                 <div className="space-y-2">
                   <h3 className="flex items-center justify-center gap-1 text-4xl font-extrabold text-foreground md:text-5xl" dir="ltr">
-                    <span className="text-primary">{stat.suffix}</span>
+                    <span className="text-primary dark:text-[var(--grad-purble-light)]">{stat.suffix}</span>
                     <AnimatedCounter value={stat.value} />
                   </h3>
                   <p className="text-lg font-bold text-muted-foreground">
