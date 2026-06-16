@@ -27,6 +27,7 @@ export default function RootLayout({
     <html
       lang="ar"
       dir="rtl"
+      suppressHydrationWarning
     >
       <head>
         <script
@@ -47,7 +48,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col font-cairo">
+      <body className="min-h-screen flex flex-col font-cairo" suppressHydrationWarning>
         <Header />
         <main>{children}</main>
         <Footer />
