@@ -8,6 +8,7 @@ export interface Product {
   shortDescription: string;
   fullDescription: string;
   features: string[];
+  images?: string[];
 }
 
 export const WHATSAPP_NUMBER = "201012697965";

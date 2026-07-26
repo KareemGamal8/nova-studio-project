@@ -1,17 +1,64 @@
 "use client";
 
+import { Pagination, PaginationInfo } from "@/src/design-system/components";
+import { Product } from "@/src/modules/products/data/products";
+import endpoint from "@/src/shared/endpoint";
+import { useQuery } from "@tanstack/react-query";
+import { Coins, CreditCard, Info, Search, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { ProductCard } from "./ProductCard";
-import { products } from "../data/products";
-import { Sparkles, Search, Coins, CreditCard, Info } from "lucide-react";
 
-export function ProductsList() {
+export interface CategoryItem {
+  _id: string;
+  name: string;
+  slug: string;
+}
+
+interface ProductsListProps {
+  products?: any[];
+  pagination?: PaginationInfo;
+}
+
+const fetchCategories = async (): Promise<string[]> => {
+  const response = await endpoint.get("/categories");
+  const docs: CategoryItem[] = response.data?.data?.documents || [];
+  return ["الكل", ...docs.map((cat) => cat.name)];
+};
+
+export function ProductsList({ products = [], pagination }: ProductsListProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("الكل");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(pagination?.currentPage || 1);
 
-  const categories = ["الكل", ...Array.from(new Set(products.map((p) => p.category)))];
+  const { data: categories = ["الكل"] } = useQuery({
+    queryKey: ["categories"],
+    queryFn: fetchCategories,
+    staleTime: Infinity, // Fetch only once and keep cached indefinitely
+    gcTime: 1000 * 60 * 60 * 24,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+  });
 
-  const filteredProducts = products.filter((product) => {
+  const normalizedProducts: Product[] = products.map((p: any) => {
+    const categoryName = typeof p.category === "object" ? p.category?.name : p.category;
+    const plainDesc = p.description ? p.description.replace(/<[^>]*>/g, "").trim() : p.shortDescription || "";
+    const displayPrice = typeof p.price === "number" ? `${p.price.toLocaleString("ar-EG")} ج.م` : p.price || "";
+
+    return {
+      id: p._id || p.id || String(Math.random()),
+      name: p.title || p.name || "",
+      category: categoryName || "عام",
+      points: p.coins ?? p.points ?? 0,
+      price: displayPrice,
+      image: p.imageCover || p.image || "",
+      shortDescription: plainDesc,
+      fullDescription: p.description || p.fullDescription || "",
+      features: p.features || [],
+    };
+  });
+
+  const filteredProducts = normalizedProducts.filter((product) => {
     const matchesCategory = selectedCategory === "الكل" || product.category === selectedCategory;
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -19,10 +66,19 @@ export function ProductsList() {
     return matchesCategory && matchesSearch;
   });
 
+  // Calculate default pagination state if not provided
+  const activePagination: PaginationInfo = pagination || {
+    currentPage: currentPage,
+    limit: 10,
+    totalPages: Math.ceil(filteredProducts.length / 10) || 1,
+    results: filteredProducts.length,
+    total: filteredProducts.length,
+  };
+
   return (
     <div className="min-h-screen bg-background py-12 lg:py-20">
       <div className="container mx-auto px-4 md:px-8">
-        {/* Page Header Header */}
+        {/* Page Header */}
         <div className="mx-auto mb-12 max-w-3xl text-center space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-bold text-primary">
             <Coins className="size-4 text-amber-500 animate-bounce" />
@@ -91,11 +147,23 @@ export function ProductsList() {
 
         {/* Products Grid View */}
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+
+            {/* Pagination Component */}
+            {activePagination && (
+              <div className="mt-12 border-t border-border/40 pt-8">
+                <Pagination
+                  pagination={activePagination}
+                  onPageChange={(page) => setCurrentPage(page)}
+                />
+              </div>
+            )}
+          </>
         ) : (
           <div className="my-16 flex flex-col items-center justify-center text-center space-y-3">
             <Sparkles className="size-12 text-muted-foreground/50" />

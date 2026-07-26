@@ -1,4 +1,5 @@
 import { Footer, Header } from "@/src/design-system/layouts";
+import { QueryProvider } from "@/src/providers/QueryProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -30,29 +31,15 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var savedTheme = localStorage.getItem('codeKody-theme');
-                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch (_) {}
-              })();
-            `,
-          }}
-        />
+  
       </head>
       <body className="min-h-screen flex flex-col font-cairo" suppressHydrationWarning>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <SpeedInsights />
+        <QueryProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <SpeedInsights />
+        </QueryProvider>
       </body>
     </html>
   );

@@ -1,27 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { ArrowRight, Check, CreditCard, MessageCircle, ShieldCheck, Star, Tag, Truck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, MessageCircle, Star, Tag, CreditCard, ShieldCheck, Truck } from "lucide-react";
-import { Product, products, getProductWhatsAppUrl } from "../data/products";
-import { ProductCard } from "./ProductCard";
+import { useState } from "react";
+import { getProductWhatsAppUrl, Product } from "../data/products";
 
 interface ProductDetailsProps {
   product: Product;
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
-  const [imgSrc, setImgSrc] = useState(product.image);
+  const allImages = Array.from(
+    new Set([product.image, ...(product.images || [])].filter(Boolean))
+  );
+  const [selectedImage, setSelectedImage] = useState(allImages[0] || product.image);
   const whatsappUrl = getProductWhatsAppUrl(product.name, product.points, product.price);
 
-  // Suggested products excluding the current one
-  const relatedProducts = products
-    .filter((p) => p.id !== product.id && (p.category === product.category || true))
-    .slice(0, 3);
-
   return (
-    <div className="min-h-screen bg-background py-10 lg:py-16">
+    <div className="bg-background py-10 lg:py-16">
       <div className="container mx-auto px-4 md:px-8">
         {/* Back Link */}
         <div className="mb-8">
@@ -37,22 +34,46 @@ export function ProductDetails({ product }: ProductDetailsProps) {
         {/* Main Product Info Section */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12 items-start">
           {/* Image Showcase Column */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 space-y-4">
             <div className="relative aspect-4/3 w-full overflow-hidden rounded-3xl border border-border bg-card shadow-lg dark:bg-[#0c0722]/60">
               <Image
-                src={imgSrc}
+                src={selectedImage}
                 alt={product.name}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-                onError={() => setImgSrc("https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=800&q=80")}
+                // sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain"
+                onError={() => setSelectedImage("https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&w=800&q=80")}
               />
               <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-background/90 px-4 py-1.5 text-xs font-bold text-foreground backdrop-blur-md border border-border/50 shadow-sm">
                 <Tag className="size-3.5 text-primary" />
                 <span>{product.category}</span>
               </div>
             </div>
+
+            {/* Thumbnail Gallery */}
+            {allImages.length > 1 && (
+              <div className="flex items-center gap-3 overflow-x-auto py-2 scrollbar-none">
+                {allImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedImage(img)}
+                    className={`relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl border-2 transition-all cursor-pointer ${
+                      selectedImage === img
+                        ? "border-primary shadow-md scale-105"
+                        : "border-border/60 hover:border-primary/50 opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${product.name} - ${idx + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Details & Purchase Action Column */}
@@ -78,9 +99,10 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             {/* Product Descriptions */}
             <div className="space-y-3">
               <h3 className="text-base font-bold text-foreground">وصف المنتج:</h3>
-              <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                {product.fullDescription}
-              </p>
+              <div
+                className="text-sm sm:text-base leading-relaxed text-muted-foreground"
+                dangerouslySetInnerHTML={{ __html: product.fullDescription }}
+              />
             </div>
 
             {/* Features List */}
@@ -137,18 +159,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             </div>
           </div>
         </div>
-
-        {/* Related Products Section */}
-        {relatedProducts.length > 0 && (
-          <div className="mt-20 border-t border-border/40 pt-12">
-            <h2 className="mb-8 text-2xl font-bold text-foreground">منتجات أخرى قد تعجبك:</h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {relatedProducts.map((relProduct) => (
-                <ProductCard key={relProduct.id} product={relProduct} />
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
