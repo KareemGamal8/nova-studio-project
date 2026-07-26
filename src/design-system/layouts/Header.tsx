@@ -37,6 +37,10 @@ const headerLinks = [
     href: URLS.testimonials,
     icon: MessageCircle,
   },
+  {
+    label: "المنتجات",
+    href: URLS.products,
+  },
 ];
 function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +67,7 @@ function MobileHeader() {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-3 rounded-xl px-4 py-3 font-bold text-foreground transition-all hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-primary-foreground"
                 >
-                  <Icon className="size-5" aria-hidden="true" />
+                  {Icon && <Icon className="size-5" aria-hidden="true" />}
                   {link.label}
                 </Link>
               );
@@ -171,17 +175,20 @@ export function Header() {
 
               return (
                 <Link
-                  onClick={() => {
-                    const sectionId = document.getElementById(link.href.slice(1));
-                    if (sectionId) {
-                      sectionId.scrollIntoView({ behavior: "smooth" });
+                  onClick={(e) => {
+                    if (link.href.startsWith("#")) {
+                      const sectionId = document.getElementById(link.href.slice(1));
+                      if (sectionId) {
+                        e.preventDefault();
+                        sectionId.scrollIntoView({ behavior: "smooth" });
+                      }
                     }
                   }}
                   href={link.href}
                   key={link.href}
                   className="flex h-10 shrink-0 items-center gap-2 rounded-lg px-4 font-bold text-muted-foreground dark:text-foreground/80 transition-all hover:text-primary dark:hover:text-primary-foreground hover:bg-primary/10 dark:hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
                 >
-                  <Icon className="size-4" aria-hidden="true" />
+                  {Icon && <Icon className="size-4" aria-hidden="true" />}
                   {link.label}
                 </Link>
               );

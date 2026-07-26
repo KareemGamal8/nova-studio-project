@@ -1,6 +1,13 @@
 import Image from "next/image";
-import LogoImg from "../../../public/logo.svg";
 
 export function Logo() {
-  return <Image src={LogoImg} alt="logo" width={100} height={100} />;
+  return (
+    <Image
+      src="/logo.svg"
+      alt="CodeKody logo"
+      width={40}
+      height={40}
+      className="size-10 object-contain rounded-xl shadow-md"
+    />
+  );
 }
