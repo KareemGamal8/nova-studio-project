@@ -10,8 +10,6 @@ export const metadata: Metadata = {
 const fetchProducts = async () => {
   const response = await endpoint.get("/products");
 
-  console.log("response", response)
-
   return response.data.data;
 }
 
