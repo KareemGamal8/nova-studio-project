@@ -8,13 +8,17 @@ export const metadata: Metadata = {
 };
 
 const fetchProducts = async () => {
-  const response = await endpoint.get("/products");
-
-  return response.data.data;
-}
+  try {
+    const response = await endpoint.get("/products");
+    return response.data?.data || { documents: [], pagination: undefined };
+  } catch (error) {
+    console.error("Error fetching products during render:", error);
+    return { documents: [], pagination: undefined };
+  }
+};
 
 export default async function ProductsPage() {
-  const { documents, pagination } = await fetchProducts();
+  const { documents = [], pagination } = await fetchProducts();
 
   return <ProductsList products={documents} pagination={pagination} />;
 }
