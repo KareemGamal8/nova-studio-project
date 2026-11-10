@@ -121,8 +121,3 @@ categoryFilter.addEventListener("change", () => {
     });
 });
 
-/**
- * Get user category
- * Fetch products by selected category
- * Show products in products page
- */
