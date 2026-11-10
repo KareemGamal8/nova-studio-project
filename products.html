@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Nova Market</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+      integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="products-section container">
+      <div class="filters-bar" id="filtersSidebar">
+        <h3>Filters</h3>
+        <div class="filters-controls">
+          <div class="filter-group">
+            <label for="categoryFilter" class="filter-label">Category</label>
+            <select id="categoryFilter" class="filter-select"></select>
+          </div>
+
+          <div class="sort-container">
+            <label for="sortBy" class="sort-label">Sort By:</label>
+            <select id="sortBy" class="sort-select">
+              <option value="">Featured</option>
+              <option value="title-asc">Alphabetical: A-Z</option>
+              <option value="title-desc">Alphabetical: Z-A</option>
+            </select>
+          </div>
+
+          <p class="products-count" id="productsCount"></p>
+          <button class="reset-filters-btn" id="resetFiltersBtn">
+            <i class="fa-solid fa-rotate-left"></i> Reset Filters
+          </button>
+        </div>
+      </div>
+      <h3 class="loader" id="loader"><span></span> Please Wait...</h3>
+      <div class="products-grid" id="products-list"></div>
+    </div>
+    <img src="./recipe.jpg" alt="">
+    <script src="./script.js"></script>
+  </body>
+</html>
